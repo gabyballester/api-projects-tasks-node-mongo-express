@@ -1,0 +1,23 @@
+{
+  "name": "merntaskservidor",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gabyballester@bitbucket.org/gabyballester/node-mongo-express-projects-tasks.git"
+  },
+  "author": "Gabriel Ballester",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/gabyballester/node-mongo-express-projects-tasks#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.5",
+    "nodemon": "^2.0.4"
+  }
+}
