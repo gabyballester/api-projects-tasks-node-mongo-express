@@ -13,8 +13,18 @@ router.post('/',
     ], proyectoController.crearProyecto
 )
 
+//obtiene todos los proyectos del usuario actual
 router.get('/',
-    auth, proyectoController.crearProyecto
+    auth, proyectoController.obtenerProyectos
+)
+
+// Actualizar proyecto vía ID
+router.put('/:id',
+    auth,
+    [
+        check('nombre', 'El nombre del proyecto es obligatorio').not().isEmpty()
+    ],
+    proyectoController.actualizarProyecto
 )
 
 module.exports = router
