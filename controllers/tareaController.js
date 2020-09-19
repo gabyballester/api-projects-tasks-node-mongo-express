@@ -11,9 +11,10 @@ exports.crearTarea = async (req, res) => {
         return res.status(400).json({ errores: errores.array() })
     }
 
-    // Extraigo el proyecto y compruebo si existe
-    const { proyecto } = req.body;
     try {
+        // Extraigo el proyecto y compruebo si existe
+        const { proyecto } = req.body;
+
         const existeProyecto = await Proyecto.findById(proyecto)
         if (!existeProyecto) {
             return res.status(404).json({ msg: 'Proyecto no encontrado' })
@@ -35,29 +36,27 @@ exports.crearTarea = async (req, res) => {
         res.status(500).json({ msg: 'Hubo un error' })
     }
 }
-//         // Asigno creador que hemos asignado a req.usuario via JWT
-//         proyecto.creador = req.usuario.id
-//         //Guardar el proyecto
-//         proyecto.save();
-//         res.json(proyecto);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send('Hubo un error');
-//     }
 
 
-// //obtiene todos los proyectos del usuario actual
-// exports.obtenerProyectos = async (req, res) => {
-//     try {
-//         const { id } = req.usuario; //saco el id usuario a buscar
-//         const proyectos = await Proyecto.find({ creador: id })
-//             .sort({ creado: -1 });
-//         res.status(200).json({ proyectos })
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send('Hubo un error')
-//     }
-// }
+// Obtiene tareas por proyecto
+exports.obtenerTareas = async (req, res) => {
+    try {
+        // Extraigo el proyecto y compruebo si existe
+        const { proyecto } = req.body;
+
+        const existeProyecto = await Proyecto.findById(proyecto)
+        if (!existeProyecto) {
+            return res.status(404).json({ msg: 'Proyecto no encontrado' })
+        }
+
+        // Filtrar tareas por proyecto
+        const tareas = await Tarea.find({ proyecto: proyecto })
+        res.status(200).json({ tareas }) //.sort({ creado: -1 });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error')
+    }
+}
 
 // // Actualizar un proyecto
 // exports.actualizarProyecto = async (req, res) => {

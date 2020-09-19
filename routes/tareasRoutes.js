@@ -13,12 +13,14 @@ router.post('/',
         check('proyecto', 'El Proyecto es obligatorio').not().isEmpty()
     ], tareaController.crearTarea
 )
+
+// Obtiene tareas por proyecto
+router.get('/',
+    auth, tareaController.obtenerTareas
+)
 module.exports = router
 
-//obtiene todos los proyectos del usuario actual
-// router.get('/',
-//     auth, proyectoController.obtenerProyectos
-// )
+
 
 // // Actualizar proyecto vía ID
 // router.put('/:id',
