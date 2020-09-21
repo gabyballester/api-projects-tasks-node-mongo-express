@@ -58,13 +58,44 @@ exports.obtenerTareas = async (req, res) => {
     }
 }
 
-// // Actualizar un proyecto
-// exports.actualizarProyecto = async (req, res) => {
-//     //Revisar si hay errores en formulario
-//     const errores = validationResult(req);
-//     if (!errores.isEmpty()) {
-//         return res.status(400).json({ errores: errores.array() })
-//     }
+// Actualizar una tarea
+exports.actualizarTarea = async (req, res) => {
+    try {
+        // Extraigo propiedades de la tarea
+        const { proyecto, nombre, estado } = req.body;
+        const tareaId = req.params.id;
+        // Comprobar que la tarea existe y por tanto el proyecto
+        let tarea = await Tarea.findById(tareaId)
+        if (!tarea) {
+            return res.status(404).json({ msg: 'Tarea no encontrada' })
+        }
+        //Extraer proyecto el proyecto
+        const existeProyecto = await Proyecto.findById(proyecto)
+        // Comprobar que el proyecto pertenece al usuario autenticado
+        const userId = req.usuario.id
+        if (existeProyecto.creador.toString() !== userId) {
+            return res.status(401).json({ msg: 'No Autorizado' });
+        }
+        // Crear un objeto con la nueva información
+        const nuevaTarea = {};
+        if (nombre) nuevaTarea.nombre = nombre;
+        if (estado) nuevaTarea.estado = estado;
+        // Guardar la tarea
+        tarea = await Tarea.findOneAndUpdate({ _id: tareaId }, nuevaTarea, { new: true });
+        res.status(200).json({ tarea })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error en el servidor');
+    }
+}
+    // //Revisar si hay errores en formulario
+    // const errores = validationResult(req);
+    // if (!errores.isEmpty()) {
+    //     return res.status(400).json({ errores: errores.array() })
+    // }
+
+
 //     // Extraer info
 //     const { nombre } = req.body;
 //     const nuevoProyecto = {};
@@ -72,7 +103,7 @@ exports.obtenerTareas = async (req, res) => {
 //         nuevoProyecto.nombre = nombre
 //     }
 
-//     try {
+
 //         //id a buscar
 //         const reqId = req.params.id
 //         const userId = req.usuario.id
@@ -89,11 +120,7 @@ exports.obtenerTareas = async (req, res) => {
 //             { _id: reqId }, { $set: nuevoProyecto }, { new: true }
 //         )
 //         res.status(200).json({ proyecto })
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send('Error en el servidor');
-//     }
-// }
+
 
 // // Eliminar un proyecto
 // exports.eliminarProyecto = async (req, res) => {
