@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 exports.autenticarUsuario = async (req, res) => {
 
-     //Revisar si hay errores en formulario
+    //Revisar si hay errores en formulario
     const errores = validationResult(req);
     if (!errores.isEmpty()) {
         return res.status(400).json({ errores: errores.array() })
@@ -44,5 +44,18 @@ exports.autenticarUsuario = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+    }
+}
+
+// Obtiene que usuario está autenticado
+exports.usuarioAutenticado = async (req, res) => {
+    const userId = req.usuario.id
+    try {
+        const user = await Usuario.findById(userId)
+            .select('-password'); //ignoramos password en respuesta json
+        res.status(200).json({ user });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Hubo un error' })
     }
 }
