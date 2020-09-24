@@ -42,8 +42,8 @@ exports.crearTarea = async (req, res) => {
 exports.obtenerTareas = async (req, res) => {
     try {
         // Extraigo el proyecto y compruebo si existe
-        const { proyecto } = req.body;
-
+        const { project } = req.query;
+        const proyecto = project; // adaptación del front al back
         const existeProyecto = await Proyecto.findById(proyecto)
         if (!existeProyecto) {
             return res.status(404).json({ msg: 'Proyecto no encontrado' })
@@ -51,6 +51,7 @@ exports.obtenerTareas = async (req, res) => {
 
         // Filtrar tareas por proyecto
         const tareas = await Tarea.find({ proyecto: proyecto })
+            .sort({ creado: -1 })
         res.status(200).json({ tareas }) //.sort({ creado: -1 });
     } catch (error) {
         console.log(error);
