@@ -72,6 +72,9 @@ exports.actualizarTarea = async (req, res) => {
         }
         //Extraer proyecto el proyecto
         const existeProyecto = await Proyecto.findById(proyecto)
+        if (!existeProyecto) {
+            return res.status(404).json({ msg: 'La tarea no corresponde al proyecto' })
+        }
         // Comprobar que el proyecto pertenece al usuario autenticado
         const userId = req.usuario.id
         if (existeProyecto.creador.toString() !== userId) {
