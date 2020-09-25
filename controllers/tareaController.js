@@ -70,7 +70,7 @@ exports.actualizarTarea = async (req, res) => {
         if (!tarea) {
             return res.status(404).json({ msg: 'Tarea no encontrada' })
         }
-        //Extraer proyecto el proyecto
+        //Extraer el proyecto de esa tarea
         const existeProyecto = await Proyecto.findById(proyecto)
         if (!existeProyecto) {
             return res.status(404).json({ msg: 'La tarea no corresponde al proyecto' })
@@ -82,8 +82,8 @@ exports.actualizarTarea = async (req, res) => {
         }
         // Crear un objeto con la nueva información
         const nuevaTarea = {};
-        if (nombre) nuevaTarea.nombre = nombre;
-        if (estado) nuevaTarea.estado = estado;
+        nuevaTarea.nombre = nombre;
+        nuevaTarea.estado = estado;
         // Guardar la tarea
         tarea = await Tarea.findOneAndUpdate({ _id: tareaId }, nuevaTarea, { new: true });
         res.status(200).json({ tarea })
