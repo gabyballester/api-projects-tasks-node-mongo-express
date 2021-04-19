@@ -2,7 +2,7 @@
 
 - Este repositorio es sólo el backend de este proyecto.
 - El repo del frontend lo encontrarás aquí:  
-https://gabyballester@bitbucket.org/gabyballester/react-hooks-context
+[https://gabyballester@bitbucket.org/gabyballester/react-hooks-context](https://gabyballester@bitbucket.org/gabyballester/react-hooks-context)
 
 ***
 ### Preparación
@@ -16,7 +16,10 @@ yarn install
 yarn dev
 ```
 
-***
-### Capturas del proyecto
+#### Url y puerto
+http://localhost:4000/
 
-![Screenshot_1](screenshots/Screenshot_1.jpg)
+***
+### Captura del arranque del proyecto
+
+![Screenshot_1](Screenshot_1.jpg)
