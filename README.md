@@ -1,29 +1,22 @@
-# README #
+### Proyecto: Gestor de proyectos/tareas
 
-This README would normally document whatever steps are necessary to get your application up and running.
+- Este repositorio es sólo el backend de este proyecto.
+- El repo del frontend lo encontrarás aquí:  
+https://gabyballester@bitbucket.org/gabyballester/react-hooks-context
 
-### What is this repository for? ###
+***
+### Preparación
+#### Instalar dependencias
+```
+yarn install
+```
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+#### Arranque
+```
+yarn dev
+```
 
-### How do I get set up? ###
+***
+### Capturas del proyecto
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+![Screenshot_1](screenshots/Screenshot_1.jpg)
