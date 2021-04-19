@@ -2,7 +2,7 @@
 
 - Este repositorio es sólo el backend de este proyecto.
 - El repo del frontend lo encontrarás aquí:  
-[https://gabyballester@bitbucket.org/gabyballester/react-hooks-context](https://gabyballester@bitbucket.org/gabyballester/react-hooks-context)
+[https://github.com/gabyballester/front-react-hooks-context](https://github.com/gabyballester/front-react-hooks-context)
 
 ***
 ### Preparación
@@ -10,6 +10,9 @@
 ```
 yarn install
 ```
+
+#### Variables de entorno
+Renombra `.env.example` a `.env` y configura las variables
 
 #### Arranque
 ```
