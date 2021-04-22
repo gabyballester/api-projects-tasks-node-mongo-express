@@ -2,7 +2,7 @@
 
 - Este repositorio es sólo el backend de este proyecto.
 - El repo del frontend lo encontrarás aquí:  
-[https://github.com/gabyballester/front-react-hooks-context](https://github.com/gabyballester/front-react-hooks-context)
+[https://github.com/gabyballester/front-projects-tasks-react-hooks-context](https://github.com/gabyballester/front-projects-tasks-react-hooks-context)
 
 ***
 ### Preparación
